@@ -184,6 +184,7 @@
 // export default Product;
 
 import React, { Component } from 'react'
+import {Link} from 'react-router-dom'
 
 export default class Product extends Component {
     constructor(){
@@ -235,8 +236,8 @@ export default class Product extends Component {
                    <p className="counter">{this.state.cart.length}</p>
                    <img src="src/assets/cart.png" alt=""  className="navbar-img" />
                </div>
-               <button className="button1" style={{margin:"0px 20px 0px 0px"}}>Wishlist:{this.state.wishlist.length}</button>
-               <button className="button1">Request a Demo</button>
+               <Link to="/"><button className="button1" style={{margin:"0px 20px 0px 0px"}}>Wishlist:{this.state.wishlist.length}</button></Link>
+               <Link to="/login"><button className="button1">Request a Demo</button></Link>
            </div>
         </nav>
 
