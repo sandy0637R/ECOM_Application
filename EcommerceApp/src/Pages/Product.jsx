@@ -236,8 +236,8 @@ export default class Product extends Component {
                    <p className="counter">{this.state.cart.length}</p>
                    <img src="src/assets/cart.png" alt=""  className="navbar-img" />
                </div>
-               <Link to="/"><button className="button1" style={{margin:"0px 20px 0px 0px"}}>Wishlist:{this.state.wishlist.length}</button></Link>
-               <Link to="/login"><button className="button1">Request a Demo</button></Link>
+               <button className="button1" style={{margin:"0px 20px 0px 0px"}}>Wishlist:{this.state.wishlist.length}</button>
+               <button className="button1">Request a Demo</button>
            </div>
         </nav>
 
@@ -260,7 +260,7 @@ export default class Product extends Component {
                       <button className="button2 add-button" onClick={()=>this.addToCart(index)}>Add to Cart</button>
                       <button className="button2">View Product</button>
                       <div className='wishlist' onClick={()=>this.addToWishlist(index)}>
-                      <i class="fa-solid fa-heart"></i>
+                      <i className="fa-solid fa-heart"></i>
                       </div>
                    </div>
                 </div>

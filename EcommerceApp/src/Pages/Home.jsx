@@ -1,80 +1,67 @@
-import React, { Component } from 'react'
+import React, { Component } from "react";
 
 export default class Home extends Component {
-  constructor(){
-    super()
-    this.state={
-         cart:[],
-         wishlist:[],
-         products:[
-          {
-            name:'Sandesh',
-            price:20002,
-          },
-          {
-            name:'Raut',
-            price:5000,
-          },
-          {
-            name:'Raut',
-            price:5000,
-          },
-          {
-            name:'Raut',
-            price:5000,
-          }
-         ]
-        }
+  constructor(props) {
+    super(props);
+    this.state = {
+      cart: [],
+      wishlist: [],
+      products: [],
+    };
+  }
 
-      }
+  getProducts() {
+    console.log("Get Products");
+    fetch("https://fakestoreapi.com/products")
+      .then((res) => res.json())
+      .then((json) => this.setState({ products: json }));
+  }
 
-      addToCart(products){
-        const cart=this.state.cart;
-        cart.push(products);
-        this.setState({cart:cart})
-      }
+  componentDidMount() {
+    console.log("Mount");
+    this.getProducts();
+  }
 
-      addToWishlist(products){
-        const wishlist=this.state.wishlist;
-        wishlist.push(products);
-        this.setState({wishlist:wishlist});
-      }
   render() {
+    console.log(this.props)
     return (
       <>
-        <div>{this.state.cart.length}</div>
-        <div>{this.state.wishlist.length}</div>
-        <div className='products'>
-        {
-          this.state.products.map((products,index)=>{
-            return(
+        <div className="products">
+          {this.state.products.map((products, index) => {
+            return (
               <>
-              <div className="product-sec" key={index}>
-                <div className="product-img-sec">
-                   <img src="" alt="" className="product-img"/>
-                </div>
-                <div className="product-content-sec">
-                   <div className="product-text-sec">
-                      <p>{products.name}</p>
+                <div className="product-sec" key={index}>
+                  <div className="product-img-sec">
+                    <img src={products.image} alt="" className="product-img" />
+                  </div>
+                  <div className="product-content-sec">
+                    <div className="product-text-sec">
+                      <p>{products.title}</p>
                       <p></p>
                       <p>{products.price}</p>
-                   </div>
-                   <div className="product-button-sec">
-                      <button className="button2 add-button" onClick={()=>this.addToCart(index)}>Add to Cart</button>
-                      <button className="button2" onClick={()=>this.addToWishlist(index)}>View Product</button>
-                      <div className='wishlist'>
-                      <i class="fa-solid fa-heart"></i>
+                    </div>
+                    <div className="product-button-sec">
+                      <button
+                        className="button2 add-button"
+                        onClick={() => this.props.addToCart(index)}
+                      >
+                        Add to Cart
+                      </button>
+                      <button className="button2">View Product</button>
+                      <div
+                        className="wishlist"
+                        onClick={() => this.props.addToWishlist(index)}
+                      >
+                        <i className="fa-solid fa-heart"></i>
                       </div>
-                   </div>
+                    </div>
+                  </div>
                 </div>
-              </div>
               </>
-            )
-          })
-        }
+            );
+          })}
         </div>
       </>
-    )
+    );
   }
 }
-
