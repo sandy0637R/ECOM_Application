@@ -20,8 +20,11 @@ export default class Navbar extends Component {
              </div>
              {/* <Link to="/"><button className="button1" style={{margin:"0px 20px 0px 0px"}}>Wishlist:0</button></Link>
              <Link to="/login"><button className="button1">Login</button></Link> */}
-             <button className="button1" style={{margin:"0px 20px 0px 0px"}}>Wishlist:0</button>
-             <button className="button1">Login</button>
+             <button className="button1" style={{margin:"0px 20px 0px 0px"}}>Wishlist:{this.props.wishlist.length}</button>
+             <Link to="login">
+             <button className="button1" >Login</button>
+             </Link>
+             
          </div>
       </nav>
   </>

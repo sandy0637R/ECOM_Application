@@ -157,9 +157,9 @@
 
 .products{
   padding: 20px;
+  flex-wrap: wrap;
   display: flex;
   justify-content: space-around;
-  overflow-x: auto;
   scrollbar-width: none;
 }
 

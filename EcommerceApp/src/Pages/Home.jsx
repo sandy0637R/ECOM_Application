@@ -12,7 +12,7 @@ export default class Home extends Component {
 
   getProducts() {
     console.log("Get Products");
-    fetch("https://fakestoreapi.com/products")
+    fetch("https://api.escuelajs.co/api/v1/products")
       .then((res) => res.json())
       .then((json) => this.setState({ products: json }));
   }
@@ -23,7 +23,7 @@ export default class Home extends Component {
   }
 
   render() {
-    console.log(this.props)
+    // console.log(this.props)
     return (
       <>
         <div className="products">
@@ -32,7 +32,7 @@ export default class Home extends Component {
               <>
                 <div className="product-sec" key={index}>
                   <div className="product-img-sec">
-                    <img src={products.image} alt="" className="product-img" />
+                    <img src={products.images} alt="" className="product-img" />
                   </div>
                   <div className="product-content-sec">
                     <div className="product-text-sec">
@@ -43,14 +43,14 @@ export default class Home extends Component {
                     <div className="product-button-sec">
                       <button
                         className="button2 add-button"
-                        onClick={() => this.props.addToCart(index)}
+                        onClick={() => this.props.addToCart(products)}
                       >
                         Add to Cart
                       </button>
                       <button className="button2">View Product</button>
                       <div
                         className="wishlist"
-                        onClick={() => this.props.addToWishlist(index)}
+                        onClick={() => this.props.addToWishlist(products)}
                       >
                         <i className="fa-solid fa-heart"></i>
                       </div>
