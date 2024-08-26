@@ -5,6 +5,7 @@ import Login from "./Pages/Login";
 import Cart from "./Components/Cart";
 import Navbar from "./Components/Navbar";
 import "./index.css";
+import Wishlist from "./Components/Wishlist";
 
 // import { createBrowserRouter , RouterProvider } from "react-router-dom";
 
@@ -53,12 +54,24 @@ export default class App extends Component {
               path="login"
               element={<Login/>}
             />
+            <Route
+              path="cart"
+              element={
+                this.state.cart.map((cart,index)=>(
+                 <Cart key={index} product={cart}/>
+                ))
+             }
+            />
+            <Route
+              path="wishlist"
+              element={
+                this.state.wishlist.map((wishlist,index)=>(
+                 <Wishlist key={index} product={wishlist}/>
+               ))
+             }
+            />
           </Routes>
-          {
-             this.state.cart.map((cart,index)=>(
-              <Cart key={index} product={cart}/>
-             ))
-          }
+          
          
       </>
     );

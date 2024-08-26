@@ -37,7 +37,7 @@ export default class Home extends Component {
                   <div className="product-content-sec">
                     <div className="product-text-sec">
                       <p>{products.title}</p>
-                      <p></p>
+                      <p>{products.category.name}</p>
                       <p>{products.price}</p>
                     </div>
                     <div className="product-button-sec">
