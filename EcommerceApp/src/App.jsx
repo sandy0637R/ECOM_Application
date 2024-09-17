@@ -1,11 +1,20 @@
+// Lazy loading module
+// folder structure
+// details
+// pagination
+// cart 
+
 import React, { Component } from "react";
 import { Route, Routes } from "react-router-dom";
-import Home from "./Pages/Home";
 import Login from "./Pages/Login";
+import Home from "./Pages/Home";
 import Cart from "./Components/Cart";
 import Navbar from "./Components/Navbar";
 import "./index.css";
 import Wishlist from "./Components/Wishlist";
+import CartContainer from "./Container/CartContainer";
+import WishlistContainer from "./Container/WishlistContainer";
+import Register from "./Components/Register";
 
 // import { createBrowserRouter , RouterProvider } from "react-router-dom";
 
@@ -34,21 +43,21 @@ export default class App extends Component {
   }
 
   render() {
-    const { cart } = this.state;
-    console.log({cart})
-
-    const { wishlist} =this.state;
-    console.log({wishlist})
+    const { cart, wishlist } = this.state;
     
     return (
       <>
        
-        <Navbar cart={this.state.cart} wishlist={this.state.wishlist} />
+        <Navbar cart={cart} wishlist={wishlist} />
           <Routes>
             {/* <Route path="" element={<Product/>} /> */}
             <Route
               path="/"
               element={<Home addToCart={this.addToCart} addToWishlist={this.addToWishlist} />}
+            />
+            <Route
+              path="register"
+              element={<Register/>}
             />
             <Route
               path="login"
@@ -58,7 +67,7 @@ export default class App extends Component {
               path="cart"
               element={
                 this.state.cart.map((cart,index)=>(
-                 <Cart key={index} product={cart}/>
+                 <CartContainer key={index} product={cart}/>
                 ))
              }
             />
@@ -66,10 +75,19 @@ export default class App extends Component {
               path="wishlist"
               element={
                 this.state.wishlist.map((wishlist,index)=>(
-                 <Wishlist key={index} product={wishlist}/>
+                 <WishlistContainer key={index} product={wishlist}/>
                ))
              }
             />
+
+{/* <Route
+              path="products/:id"
+              element={
+                this.state.wishlist.map((wishlist,index)=>(
+                 <Wishlist key={index} product={wishlist}/>
+               ))
+             }
+            /> */}
           </Routes>
           
          

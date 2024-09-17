@@ -27,17 +27,30 @@
   font-size: 0.8em;
   font-weight: 600;
   color: var(--white);
-  padding: 10px 20px;
+  padding: 5px 10px;
   border-radius: 5px;
   background-color: var(--red);
   border: none;
   margin: 0px 10px;
 }
 
+.small-buttons{
+  font-size: 1em;
+    font-weight: 600;
+    padding: 7px;
+    background: var(--red);
+    border: none;
+    color: white;
+    border-radius: 4px;
+}
+
 .add-button{
   padding: 10px 25px;
 }
 
+.link{
+  text-decoration: none;
+}
 /* ==============================Login Section======================== */
 .login-page{
   width: 100%;
@@ -110,39 +123,91 @@
 }
 
 .logo{
-  font-size: 2em;
+  font-size: 1.5em;
+  color: white;
 }
 
-.navbar-img{
-  height: 53px;
-  width: 57px;
+.search-bar{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2px;
+  background-color: var(--white);
+  color: var(--dark_grey);
+  font-size: 1.2em;
+  border-radius: 10px;
 }
+
+.search-icon-sec{
+  padding: 2px 5px;
+  border-right: solid 2px var(--dark_grey);
+}
+
+.search-input{
+  font-size: 1em;
+  width: 500px;
+  padding: 2px 10px;
+  border-radius: 10px;
+  border: none;
+}
+
 
 .cart{
   display: flex;
   align-items: center;
   font-size: 0.8em;
-  padding: 0px 20px;
+  padding: 0px 2px;
   border-radius: 10px;
   margin-right: 10px;
   position: relative;
 }
 
-.counter{
-  padding: 3.5px 8px;
-  border-radius: 50%;
-  background-color: rgb(78, 74, 74);
+.wishlist-display{
+  display: flex;
+  align-items: center;
+  font-size: 0.8em;
+  padding: 0px 10px;
+  border-radius: 10px;
+  margin-right: 10px;
+  position: relative;
+}
+
+.cart-icon{
+  font-size: 2.2em;
   color: var(--white);
-  font-weight: 600;
+}
+.counter{
+  color: var(--dark_grey);
+  font-weight: 800;
   position: absolute;
   font-size: 0.8em;
-  left: 43px;
-  top: 12px;
+  left: 16.5px;
+  top: 2.5px;
+}
+.wishlist-counter{
+  color: var(--dark_grey);
+  font-weight: 800;
+  position: absolute;
+  font-size: 0.8em;
+  left: 20px;
+  top: 6.5px;
 }
 .navbar-button-sec{
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.register{
+  font-size: 1.1em;
+  font-weight: 500;
+  border-radius: 5px;
+  text-decoration: underline;
+  color: var(--white);
+}
+
+.register:hover{
+  color: var(--red);
 }
 /* ==========================================Navbar Section End================================== */
 
@@ -160,7 +225,6 @@
   flex-wrap: wrap;
   display: flex;
   justify-content: space-around;
-  scrollbar-width: none;
 }
 
 
@@ -168,7 +232,7 @@
   display: flex;
   flex-direction: column;
   padding: 10px;
-  margin: 20px;
+  margin: 20px 0px;
   box-shadow: 0px 0px 5px var(--red);
   border-radius: 10px;
 }
@@ -180,8 +244,8 @@
 }
 
 .product-img{
-  width: 350px;
-  height: 225px;
+  width: 320px;
+  height: 200px;
   box-shadow: 0px 0px 1px var(--dark_grey);
   border-radius: 5px;
 }
@@ -195,7 +259,7 @@
 }
 
 .product-text-sec{
-  width: 340px;
+  width: 310px;
   height: 150px;
   padding: 5px;
 }
@@ -215,6 +279,22 @@
   border-radius: 5px;
   margin-left: 10px;
 }
+
+.product-title{
+  font-size: 1.3em;
+  font-weight: 600;
+  height: 60px;
+}
+
+.product-category{
+  height: 30px;
+}
+
+.product-price{
+  font-size: 1.2em;
+  font-weight: 600;
+  height: 30px;
+}
 /*================================== Products Section End =========================== */
 
 /* Cart Section  */
@@ -222,11 +302,21 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  box-shadow: 0px 0px 2px var(--red);
+  padding: 2px;
+  border-radius: 5px;
 }
 
-.element{
-  display: inline-block;
-}
 .container{
   display: flex;
+}
+
+.product-counter{
+  padding: 5px;
+  font-size: 1em;
+  font-weight: 600;
+  text-align: center;
+  width: 30px;
+  overflow-x: auto;
+  scrollbar-width: none;
 }
