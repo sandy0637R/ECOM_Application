@@ -12,6 +12,7 @@ const Login = () => {
     const loggedUser = JSON.parse(localStorage.getItem("user"));
     if(input.name === loggedUser.name && input.password===loggedUser.password){
       navigate("/");
+      alert("Login successful")
     }
     else{
       alert("Enter correct Username and Password")
@@ -45,7 +46,6 @@ const Login = () => {
                 </div>
                 <div className='login-buttons'>
                     <input type="submit" className='button1'/>
-                    <p className='login-text'>Forgot password ?</p>
                 </div>
 
             </form>

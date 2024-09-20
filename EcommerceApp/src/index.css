@@ -149,6 +149,7 @@
   padding: 2px 10px;
   border-radius: 10px;
   border: none;
+  outline: none;
 }
 
 
@@ -307,9 +308,7 @@
   border-radius: 5px;
 }
 
-.container{
-  display: flex;
-}
+
 
 .product-counter{
   padding: 5px;
@@ -320,3 +319,16 @@
   overflow-x: auto;
   scrollbar-width: none;
 }
+
+.container {
+  padding: 20px;
+}
+
+.cart-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 16px; /* Space between items */
+}
+
+

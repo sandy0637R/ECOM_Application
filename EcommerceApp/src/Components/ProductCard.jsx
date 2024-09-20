@@ -1,7 +1,7 @@
-function ProductCard(props) {
-  const { image, title, category_name, price, products, index  } = props;  
+function ProductCard({ image, title, category_name, price, product, addToCart, addToWishlist }) {
+  
   return (
-    <div className="product-sec" key={title+index}>
+    <div className="product-sec" key={title}>
       <div className="product-img-sec">
         <img
           src={image}
@@ -18,14 +18,14 @@ function ProductCard(props) {
         <div className="product-button-sec">
           <button
             className="button2 add-button"
-            onClick={() => props.addToCart(products)}
+            onClick={() => addToCart(product)}
           >
             Add to Cart
           </button>
           <button className="button2">View Product</button>
           <div
             className="wishlist"
-            onClick={() => props.addToWishlist(products)}
+            onClick={() => addToWishlist(product)}
           >
             <i className="fa-solid fa-heart"></i>
           </div>
