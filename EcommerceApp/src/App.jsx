@@ -118,6 +118,7 @@ const LazyRegister = lazy(() => import("./Components/Register"));
 const LazyLogin = lazy(() => import("./Pages/Login"));
 const LazyCart = lazy(() => import("./Container/CartContainer"));
 const LazyWishlist = lazy(() => import("./Container/WishlistContainer"));
+const LazyProfile = lazy(()=>import("./Pages/Profile"))
 
 const App = () => {
   const cart = useSelector((state) => state.cart); // Get cart from Redux state
@@ -170,6 +171,14 @@ const App = () => {
             <Suspense fallback={<div>Loading...</div>}>
               <LazyWishlist products={wishlist} /> {/* Pass entire wishlist */}
             </Suspense>
+          }
+        />
+        <Route
+          path="profile"
+          element={
+          <Suspense fallback={<div>Loading...</div>}>
+            <LazyProfile/>
+          </Suspense>
           }
         />
       </Routes>

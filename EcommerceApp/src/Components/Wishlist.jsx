@@ -18,15 +18,6 @@ function Wishlist(props) {
     }
   };
 
-  const increment = () => {
-    setQuantity(prev => prev + 1);
-  };
-
-  const decrement = () => {
-    if (quantity > 1) {
-      setQuantity(prev => prev - 1);
-    }
-  };
 
   return (
     <div className="product-sec">
@@ -45,11 +36,6 @@ function Wishlist(props) {
         </div>
         <div className='product-button-sec'>
           <button className='button2' onClick={handleRemove}>Remove from Wishlist</button>
-          <div className='button-count-sec'>
-            <button className='small-buttons' onClick={increment}>+</button>
-            <p className='product-counter'>{quantity}</p>
-            <button className='small-buttons' onClick={decrement}>-</button>
-          </div>
         </div>
       </div>
     </div>

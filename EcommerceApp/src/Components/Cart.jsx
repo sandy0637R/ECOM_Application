@@ -45,23 +45,29 @@
 
 
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { removeFromCart } from '../Store/action'; // Import your actions
 
 function Cart(props) {
   const { image, title, price, category } = props;
   const dispatch = useDispatch();
-
-  // Local state for item count
-  const [count, setCount] = React.useState(1); // Start with a count of 1
+  
+  // Get the cart from Redux state
+  const cart = useSelector(state => state.cart);
+  const cartItem = cart.find(item => item.title === title);
+  
+  // Check if the item exists in the cart and get its quantity
+  const count = cartItem ? cartItem.quantity : 0;
 
   const increment = () => {
-    setCount(prevCount => prevCount + 1);
+    dispatch({ type: 'ADD_TO_CART', payload: { title } }); // Dispatch add action
   };
 
   const decrement = () => {
     if (count > 1) {
-      setCount(prevCount => prevCount - 1); // Prevent going below 1
+      dispatch({ type: 'REMOVE_FROM_CART', payload: { title } }); // Decrement quantity by 1
+    } else if (count === 1) {
+      handleRemove(); // If quantity is 1, remove item completely
     }
   };
 
@@ -82,12 +88,14 @@ function Cart(props) {
         </div>
         <div className="product-button-sec">
           <button className="button2">View Product</button>
-          <button className="button2" onClick={handleRemove}>Remove from Cart</button>
+
+          {/* quantity section */}
           <div className='button-count-sec'>
             <button className="small-buttons" onClick={increment}>+</button>
             <p className='product-counter'>{count}</p>
             <button className="small-buttons" onClick={decrement}>-</button>
           </div>
+          {/* quantity section end */}
         </div>
       </div>
     </div>
@@ -95,4 +103,5 @@ function Cart(props) {
 }
 
 export default Cart;
+
 
