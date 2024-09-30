@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux'; // Import useSelector to access Redux store
-import Wishlist from '../Components/Wishlist';
+import Wishlist from '../../Components/Wishlist/Wishlist';
 
 const WishlistContainer = () => {
   // Get wishlist products from Redux state

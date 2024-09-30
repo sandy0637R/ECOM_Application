@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { removeFromWishlist, addToCart } from '../Store/action'; // Import your actions
+import { removeFromWishlist, addToCart } from '../../Store/action'; // Import your actions
 
 function Wishlist(props) {
   const { image, title, price, category } = props;

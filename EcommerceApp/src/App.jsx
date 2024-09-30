@@ -108,17 +108,20 @@
 // }
 
 import React, { lazy, Suspense } from "react";
+import Loader from "./Components/Loader/Loader";
 import { Route, Routes } from "react-router-dom";
-import Navbar from "./Components/Navbar";
+import Navbar from "./Components/Navbar/Navbar";
 import { useSelector, useDispatch } from "react-redux";
 import {  addToCart, addToWishlist } from "./Store/action"; // Update this import
 
-const LazyHome = lazy(() => import("./Pages/Home"));
-const LazyRegister = lazy(() => import("./Components/Register"));
-const LazyLogin = lazy(() => import("./Pages/Login"));
-const LazyCart = lazy(() => import("./Container/CartContainer"));
-const LazyWishlist = lazy(() => import("./Container/WishlistContainer"));
-const LazyProfile = lazy(()=>import("./Pages/Profile"))
+const LazyHome = lazy(() => import("./Pages/Home/Home"));
+const LazyRegister = lazy(() => import("./Components/Register/Register"));
+const LazyLogin = lazy(() => import("./Pages/Login/Login"));
+const LazyCart = lazy(() => import("./Container/CartContainer/CartContainer"));
+const LazyWishlist = lazy(() => import("./Container/WishlistContainer/WishlistContainer"));
+const LazyProfile = lazy(()=>import("./Pages/Profile/Profile"))
+const LazyTransaction = lazy(()=>import("./Pages/Transaction/Transaction"))
+const LazyViewProduct = lazy(()=>import("./Pages/ViewProduct/ViewProduct"))
 
 const App = () => {
   const cart = useSelector((state) => state.cart); // Get cart from Redux state
@@ -133,7 +136,7 @@ const App = () => {
         <Route
           path="/"
           element={
-            <Suspense fallback={<div>Loading...</div>}>
+            <Suspense fallback={<Loader/>}>
               <LazyHome
                 addToCart={(product) => dispatch(addToCart(product))} // Dispatch add to cart
                 addToWishlist={(product) => dispatch(addToWishlist(product))} // Dispatch add to wishlist
@@ -144,7 +147,7 @@ const App = () => {
         <Route
           path="register"
           element={
-            <Suspense fallback={<div>Loading...</div>}>
+            <Suspense fallback={<Loader/>}>
               <LazyRegister />
             </Suspense>
           }
@@ -152,7 +155,7 @@ const App = () => {
         <Route
           path="login"
           element={
-            <Suspense fallback={<div>Loading...</div>}>
+            <Suspense fallback={<Loader/>}>
               <LazyLogin />
             </Suspense>
           }
@@ -160,7 +163,7 @@ const App = () => {
         <Route
           path="cart"
           element={
-            <Suspense fallback={<div>Loading...</div>}>
+            <Suspense fallback={<Loader/>}>
               <LazyCart products={cart} /> {/* Pass entire cart */}
             </Suspense>
           }
@@ -168,7 +171,7 @@ const App = () => {
         <Route
           path="wishlist"
           element={
-            <Suspense fallback={<div>Loading...</div>}>
+            <Suspense fallback={<Loader/>}>
               <LazyWishlist products={wishlist} /> {/* Pass entire wishlist */}
             </Suspense>
           }
@@ -176,8 +179,24 @@ const App = () => {
         <Route
           path="profile"
           element={
-          <Suspense fallback={<div>Loading...</div>}>
+          <Suspense fallback={<Loader/>}>
             <LazyProfile/>
+          </Suspense>
+          }
+        />
+        <Route
+          path="transaction"
+          element={
+          <Suspense fallback={<Loader/>}>
+            <LazyTransaction/>
+          </Suspense>
+          }
+        />
+        <Route
+          path="viewproduct"
+          element={
+          <Suspense fallback={<Loader/>}>
+            <LazyViewProduct/>
           </Suspense>
           }
         />

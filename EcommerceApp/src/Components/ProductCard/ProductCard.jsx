@@ -1,13 +1,17 @@
+import {  useNavigate } from "react-router-dom";
+
 function ProductCard({ image, title, category_name, price, product, addToCart, addToWishlist }) {
-  
+  const navigate = useNavigate();
+
+  const handleViewProduct = () => {
+    // Navigate to the ViewProduct component, passing the product in the state
+    navigate("/viewproduct", { state: { product } });
+  };
+
   return (
     <div className="product-sec" key={title}>
       <div className="product-img-sec">
-        <img
-          src={image}
-          alt=""
-          className="product-img"
-        />
+        <img src={image} alt={title} className="product-img" />
       </div>
       <div className="product-content-sec">
         <div className="product-text-sec">
@@ -22,7 +26,9 @@ function ProductCard({ image, title, category_name, price, product, addToCart, a
           >
             Add to Cart
           </button>
-          <button className="button2">View Product</button>
+          <button className="button2" onClick={handleViewProduct}>
+            View Product
+          </button>
           <div
             className="wishlist"
             onClick={() => addToWishlist(product)}

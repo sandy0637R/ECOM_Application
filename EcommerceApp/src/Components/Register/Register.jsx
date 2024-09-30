@@ -6,18 +6,18 @@ const Register = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState(""); // State for error messages
-  const [success, setSuccess] = useState(""); // State for success messages
+  const [phone, setPhone] = useState(""); // New state for phone number
+  const [address, setAddress] = useState(""); // New state for address
+  const [error, setError] = useState(""); 
+  const [success, setSuccess] = useState(""); 
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    // Reset success and error messages
     setError("");
     setSuccess("");
 
     // Basic validation
-    if (!name || !email || !password) {
+    if (!name || !email || !password || !phone || !address) {
       setError("Please fill in all fields.");
       return;
     }
@@ -35,29 +35,28 @@ const Register = () => {
       return;
     }
 
-    // Store signup data in localStorage with login status
+    // Store signup data in localStorage
     const userData = {
       name,
       email,
       password,
-      isLoggedIn: true, // Set the user as logged in after signup
+      phone,
+      address,
+      isLoggedIn: true,
     };
 
     try {
       localStorage.setItem("userData", JSON.stringify(userData));
       console.log("Signup data stored successfully:", userData);
-
-      // Reset form after successfully storing the data
       setName("");
       setEmail("");
       setPassword("");
-
-      // Display success message
+      setPhone("");
+      setAddress("");
       setSuccess("Signup successful! Redirecting to home page...");
 
-      // Add a delay for smooth navigation
       setTimeout(() => {
-        navigate("/"); // Navigate to the homepage or profile page
+        navigate("/");
       }, 1000);
     } catch (err) {
       console.error("Error storing signup data in localStorage:", err);
@@ -70,8 +69,9 @@ const Register = () => {
       <div className='login-page'>
         <form className='login-main' onSubmit={handleSubmit}>
           <h1 className='login-heading'>Register</h1>
-          {error && <div className="error-message">{error}</div>} {/* Display error message */}
-          {success && <div className="success-message">{success}</div>} {/* Display success message */}
+          {error && <div className="error-message">{error}</div>} 
+          {success && <div className="success-message">{success}</div>} 
+          
           <div className='login-sec'>
             <label htmlFor="userName" className='login-label'>Enter Your Name:</label>
             <input
@@ -83,6 +83,7 @@ const Register = () => {
               id='userName'
             />
           </div>
+          
           <div className='login-sec'>
             <label htmlFor="userEmail" className='login-label'>Enter Your Email:</label>
             <input
@@ -94,6 +95,7 @@ const Register = () => {
               id='userEmail'
             />
           </div>
+          
           <div className='login-sec'>
             <label htmlFor="userPassword" className='login-label'>Enter Your Password:</label>
             <input
@@ -105,6 +107,31 @@ const Register = () => {
               id='userPassword'
             />
           </div>
+          
+          <div className='login-sec'>
+            <label htmlFor="userPhone" className='login-label'>Enter Your Phone Number:</label>
+            <input
+              name='phone'
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)} 
+              type="tel" 
+              className='login-input' 
+              id='userPhone'
+            />
+          </div>
+          
+          <div className='login-sec'>
+            <label htmlFor="userAddress" className='login-label'>Enter Your Address:</label>
+            <input
+              name='address'
+              value={address}
+              onChange={(e) => setAddress(e.target.value)} 
+              type="text" 
+              className='login-input' 
+              id='userAddress'
+            />
+          </div>
+
           <div className='login-sec'>
             <input 
               type="submit" 

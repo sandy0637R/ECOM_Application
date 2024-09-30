@@ -46,7 +46,7 @@
 
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { removeFromCart } from '../Store/action'; // Import your actions
+import { removeFromCart } from '../../Store/action'; // Import your actions
 
 function Cart(props) {
   const { image, title, price, category } = props;

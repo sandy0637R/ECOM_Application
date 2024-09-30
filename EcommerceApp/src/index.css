@@ -114,6 +114,7 @@
   padding: 15px;
   position: sticky;
   top: 0;
+  z-index: 2;
 }
 
 .navbar-logo-sec{
@@ -330,5 +331,110 @@
   justify-content: flex-start;
   gap: 16px; /* Space between items */
 }
+
+
+/* Profile Section  */
+.profile-page {
+  padding: 20px;
+}
+
+.profile-heading {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.profile-details p {
+  font-size: 18px;
+  margin: 5px 0;
+}
+
+
+/* Loader Section  */
+.loader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh; /* Full viewport height */
+  font-size: 20px;
+  color: #333;
+}
+
+.spinner {
+  border: 8px solid #f3f3f3; /* Light gray */
+  border-top: 8px solid #3498db; /* Blue */
+  border-radius: 50%;
+  width: 50px; /* Spinner size */
+  height: 50px; /* Spinner size */
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Purchase Section  */
+.purchase-section {
+  margin-top: 20px;
+  padding: 10px;
+  border-top: 1px solid #ccc;
+}
+
+.purchase-button {
+  padding: 10px 20px;
+  background-color: #28a745; /* Green */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.purchase-button:hover {
+  background-color: #218838; /* Darker green */
+}
+
+
+/* Transaction Section */
+.transaction-container {
+  padding: 20px;
+  max-width: 600px;
+  margin: auto;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.bill-details {
+  margin-bottom: 20px;
+}
+
+.bill-item {
+  display: flex;
+  justify-content: space-between;
+}
+
+.total-price {
+  font-weight: bold;
+  font-size: 1.2em;
+  margin-top: 10px;
+}
+
+.continue-button {
+  padding: 10px 20px;
+  background-color: #007bff; /* Blue */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.continue-button:hover {
+  background-color: #0056b3; /* Darker blue */
+}
+
+
+
+
+
 
 
