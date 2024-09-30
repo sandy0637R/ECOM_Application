@@ -1,54 +1,44 @@
-// ProductView.js
 import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { addToCart, addToWishlist } from '../../redux/actions'; // Import actions
-import './ProductView.css';
+import { useSelector } from 'react-redux'; // Import useSelector to access Redux store
+import Cart from '../../Components/Cart/Cart'; // Assuming Cart is your cart item component
+import { Link } from 'react-router-dom';
 
-const ProductView = () => {
-    const products = useSelector((state) => state.products); // Assuming products are stored in redux
-    const dispatch = useDispatch();
+const CartContainer = () => {
+  // Get cart products from Redux state
+  const cartProducts = useSelector((state) => state.cart);
 
-    const handleAddToCart = (product) => {
-        dispatch(addToCart({ ...product, quantity: 1 })); // Dispatch action to add product to cart
-    };
+  console.log("CartContainer component", cartProducts);
 
-    const handleAddToWishlist = (product) => {
-        dispatch(addToWishlist(product)); // Dispatch action to add product to wishlist
-    };
+  // Calculate total price
+  const calculateTotalPrice = () => {
+    return cartProducts.reduce((total, product) => total + product.price, 0).toFixed(2);
+  };
 
-    return (
-        <div className='product-view-container'>
-            <h1>Products</h1>
-            <div className='product-grid'>
-                {products.length > 0 ? (
-                    products.map((product) => (
-                        <div key={product.id} className='product-card'>
-                            <img src={product.image} alt={product.title} className='product-image' />
-                            <h2 className='product-title'>{product.title}</h2>
-                            <p className='product-price'>${product.price.toFixed(2)}</p>
-                            <p className='product-category'>{product.category}</p>
-                            <div className='button-group'>
-                                <button
-                                    className='add-to-cart-button'
-                                    onClick={() => handleAddToCart(product)}
-                                >
-                                    Add to Cart
-                                </button>
-                                <button
-                                    className='add-to-wishlist-button'
-                                    onClick={() => handleAddToWishlist(product)}
-                                >
-                                    Add to Wishlist
-                                </button>
-                            </div>
-                        </div>
-                    ))
-                ) : (
-                    <p>No products available</p>
-                )}
-            </div>
+  return (
+    <div className='container'>
+      <div className='cart-container'>
+        {cartProducts.length > 0 ? (
+          cartProducts.map((product, index) => (
+            <Cart
+              key={index}
+              image={product.image}
+              title={product.title}
+              price={product.price}
+              category={product.category}
+            />
+          ))
+        ) : (
+          <p>Your cart is empty.</p> // Message when cart is empty
+        )}
+      </div>
+      {cartProducts.length > 0 && (
+        <div className='purchase-section'>
+          <h3>Total Price: ${calculateTotalPrice()}</h3>
+          <Link to="/transaction"><button className='purchase-button'>Proceed to Checkout</button></Link>
         </div>
-    );
+      )}
+    </div>
+  );
 };
 
-export default ProductView;
+export default CartContainer;
