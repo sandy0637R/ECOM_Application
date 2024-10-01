@@ -113,7 +113,7 @@ import { Route, Routes } from "react-router-dom";
 import Navbar from "./Components/Navbar/Navbar";
 import { useSelector, useDispatch } from "react-redux";
 import {  addToCart, addToWishlist } from "./Store/action"; // Update this import
-
+import Footer from "./Components/Footer/Footer";
 const LazyHome = lazy(() => import("./Pages/Home/Home"));
 const LazyRegister = lazy(() => import("./Components/Register/Register"));
 const LazyLogin = lazy(() => import("./Pages/Login/Login"));
@@ -122,6 +122,7 @@ const LazyWishlist = lazy(() => import("./Container/WishlistContainer/WishlistCo
 const LazyProfile = lazy(()=>import("./Pages/Profile/Profile"))
 const LazyTransaction = lazy(()=>import("./Pages/Transaction/Transaction"))
 const LazyViewProduct = lazy(()=>import("./Pages/ViewProduct/ViewProduct"))
+
 
 const App = () => {
   const cart = useSelector((state) => state.cart); // Get cart from Redux state
@@ -201,6 +202,8 @@ const App = () => {
           }
         />
       </Routes>
+      <Footer/>
+
     </>
   );
 };

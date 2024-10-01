@@ -5,7 +5,7 @@ const ImageSlider = () => {
   const [slideIndex, setSlideIndex] = useState(0);
 
   const images = [
-    { src: 'https://via.placeholder.com/300x150/FF5733/FFFFFF?text=Product+1', alt: 'Image 1', caption: 'Caption Text 1' },
+    { src: 'https://via.placeholder.com/300x150/33FF57/FFFFFF?text=Product+1', alt: 'Image 1', caption: 'Caption Text 1' },
     { src: 'https://via.placeholder.com/300x150/33FF57/FFFFFF?text=Product+2', alt: 'Image 2', caption: 'Caption Text 2' },
     { src: 'https://via.placeholder.com/300x150/3357FF/FFFFFF?text=Product+3', alt: 'Image 3', caption: 'Caption Text 3' },
   ];

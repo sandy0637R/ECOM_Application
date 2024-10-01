@@ -1,5 +1,6 @@
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
+import "./Navbar.css";
 
 const Navbar = ({ cart, wishlist }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -28,15 +29,6 @@ const Navbar = ({ cart, wishlist }) => {
     }
   };
 
-  const handleSearchChange = (e) => {
-    setSearchQuery(e.target.value);
-  };
-
-  const handleSearchSubmit = (e) => {
-    e.preventDefault();
-    console.log("Searching for:", searchQuery);
-    // Implement search logic or redirect as needed
-  };
 
   const handleCart = () => {
     if (isLoggedIn) {
@@ -62,20 +54,18 @@ const Navbar = ({ cart, wishlist }) => {
         </div>
       </Link>
 
-      <form className='search-bar' onSubmit={handleSearchSubmit}>
-        <div className='search-icon-sec'>
+      <div className='search-bar'>
+        <div className='search-icon-section'>
           <i className="fa-solid fa-magnifying-glass search-icon"></i>
         </div>
         <div className='search-input-sec'>
           <input 
             type="text" 
-            className='search-input' 
-            value={searchQuery} 
-            onChange={handleSearchChange} 
+            className='search-input'  
             placeholder="Search..."
           />
         </div>
-      </form>
+      </div>
 
       <div className="navbar-button-sec">
         <div className="cart" onClick={handleCart}>
@@ -92,7 +82,7 @@ const Navbar = ({ cart, wishlist }) => {
           <>
             <li className="nav-item">
               <NavLink to="/profile" className="nav-link">
-                Welcome, {username}
+                <i class="fa-solid fa-user user-icon"></i>
               </NavLink>
             </li>
             <li className="nav-item" style={{ cursor: "pointer" }} onClick={handleLogout}>

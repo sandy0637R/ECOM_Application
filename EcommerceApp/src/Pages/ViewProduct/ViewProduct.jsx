@@ -24,8 +24,8 @@ const ViewProduct = () => {
     }
   };
 
-  const handleBackToHome = () => {
-    navigate('/'); // Navigate back to the home page
+  const handleBack = () => {
+    navigate(-1); // Navigate back to the previous page
   };
 
   if (!product) {
@@ -33,21 +33,29 @@ const ViewProduct = () => {
   }
 
   return (
+    <>
+    <div className='viewproduct-background'>
     <div className="view-product">
+      <div className='image-section'>
       <img src={product.image} alt={product.title} className="product-image" />
-      <h2 className="product-title">{product.title}</h2>
-      <p className="product-description">{product.description}</p>
-      <p className="product-price">${product.price.toFixed(2)}</p>
+      </div>
+      <div className='content-section'>
+      <h2 className="viewproduct-title">{product.title}</h2>
+      <p className="viewproduct-description">{product.description}</p>
+      <p className="viewproduct-price">${product.price.toFixed(2)}</p>
       <button className="add-to-cart-button" onClick={handleAddToCart}>
         Add to Cart
       </button>
       <button className="add-to-wishlist-button" onClick={handleAddToWishlist}>
         Add to Wishlist
       </button>
-      <button className="back-to-home-button" onClick={handleBackToHome}>
-        Back to Home
+      <button className="back-button" onClick={handleBack}>
+        Back
       </button>
+      </div>
     </div>
+    </div>
+    </>
   );
 };
 

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { removeFromWishlist, addToCart } from '../../Store/action'; // Import your actions
+import "./Wishlist.css";
 
 function Wishlist(props) {
   const { image, title, price, category } = props;
@@ -18,24 +19,25 @@ function Wishlist(props) {
     }
   };
 
-
   return (
-    <div className="product-sec">
-      <div className="product-img-sec">
-        <img src={image} alt={title} className="product-img" />
+    <div className="wishlist-sec">
+      <div className="wishlist-img-sec">
+        <img src={image} alt={title} className="wishlist-img" />
       </div>
-      <div className="product-content-sec">
-        <div className="product-text-sec">
-          <p>{title}</p>
-          <p>{category}</p>
-          <p>${price.toFixed(2)}</p>
+      <div className="wishlist-content-sec">
+        <div className="wishlist-text-sec">
+          <p className="wishlist-title">{title}</p>
+          <div className='wishlist-sub-sec'>
+            <p>{category}</p>
+            <p className="wishlist-price">${price.toFixed(2)}</p>
+          </div>
         </div>
-        <div className="product-button-sec">
-          <button className="button2">View Product</button>
-          <button className='button2' onClick={handleAddToCart}>Add to Cart</button>
+        <div className="wishlist-button-sec">
+          <button className="wishlist-button">View Product</button>
         </div>
-        <div className='product-button-sec'>
-          <button className='button2' onClick={handleRemove}>Remove from Wishlist</button>
+        <div className="wishlist-button-sec">
+          <button className="wishlist-remove-button" onClick={handleRemove}>Remove</button>
+          <button className="wishlist-addtocart" onClick={handleAddToCart}>Add to Cart</button>
         </div>
       </div>
     </div>
