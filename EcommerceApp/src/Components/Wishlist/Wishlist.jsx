@@ -1,22 +1,28 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { removeFromWishlist, addToCart } from '../../Store/action'; // Import your actions
+import { removeFromWishlist, addToCart } from '../../Store/action'; 
+import { useNavigate } from 'react-router-dom'; 
 import "./Wishlist.css";
 
 function Wishlist(props) {
-  const { image, title, price, category } = props;
+  const { image, title, price, category, product } = props; 
   const dispatch = useDispatch();
-  const [quantity, setQuantity] = useState(1); // Manage quantity for adding to cart
+  const navigate = useNavigate(); 
+  const [quantity, setQuantity] = useState(1);
 
   const handleRemove = () => {
-    dispatch(removeFromWishlist({ title })); // Remove item from wishlist
+    dispatch(removeFromWishlist({ title }));
   };
 
   const handleAddToCart = () => {
     if (quantity > 0) {
-      dispatch(addToCart({ image, title, price, category, quantity })); // Add item to cart
-      handleRemove(); // Optionally remove from wishlist after adding to cart
+      dispatch(addToCart({ image, title, price, category, quantity }));
+      handleRemove();
     }
+  };
+
+  const handleViewProduct = () => {
+    navigate("/viewproduct", { state: { product } });
   };
 
   return (
@@ -33,7 +39,9 @@ function Wishlist(props) {
           </div>
         </div>
         <div className="wishlist-button-sec">
-          <button className="wishlist-button">View Product</button>
+          <button className="wishlist-button" onClick={handleViewProduct}>
+            View Product
+          </button>
         </div>
         <div className="wishlist-button-sec">
           <button className="wishlist-remove-button" onClick={handleRemove}>Remove</button>

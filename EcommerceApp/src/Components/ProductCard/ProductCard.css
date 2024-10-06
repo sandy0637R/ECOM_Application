@@ -83,6 +83,13 @@
     margin-left: 5px;
     border: none;
   }
+
+  .wishlist:hover, .viewproduct-button:hover, .cart-button:hover{
+    background-color: var(--white);
+    box-shadow: 0px 0px 5px var(--dark_grey);
+    color: var(--dark_grey);
+    font-weight: 600;
+  }
   
   .product-title{
     font-size: 16px;

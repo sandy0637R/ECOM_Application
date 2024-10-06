@@ -32,6 +32,7 @@ const CartContainer = () => {
                 title={product.title}
                 price={product.price}
                 category={product.category}
+                product={product}
               />
             ))
           ) : (

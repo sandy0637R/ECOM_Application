@@ -1,11 +1,13 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { removeFromCart } from '../../Store/action'; 
-import "./Cart.css" 
+import { useNavigate } from 'react-router-dom'; 
+import "./Cart.css"; 
 
 function Cart(props) {
-  const { image, title, price, category } = props;
+  const { image, title, price, category, product } = props; 
   const dispatch = useDispatch();
+  const navigate = useNavigate(); 
   
   const cart = useSelector(state => state.cart);
   const cartItem = cart.find(item => item.title === title);
@@ -28,9 +30,13 @@ function Cart(props) {
     dispatch(removeFromCart({ title }));
   };
 
+  const handleViewProduct = () => {
+    navigate("/viewproduct", { state: { product } }); // Pass the product correctly
+  };
+
   return (
-        <div className="cart-sec"> 
-    <div className="cart-img-sec"> 
+    <div className="cart-sec"> 
+      <div className="cart-img-sec"> 
         <img src={image} alt={title} className="cart-img" /> 
       </div>
       <div className="cart-content-sec"> 
@@ -40,7 +46,12 @@ function Cart(props) {
           <p className='cart-price'>${price.toFixed(2)}</p>
         </div>
         <div className="cart-button-sec"> 
-          <button className="cart-viewproduct-button">View Product</button>
+          <button 
+            className="cart-viewproduct-button" 
+            onClick={handleViewProduct}
+          >
+            View Product
+          </button>
 
           <div className='cart-button-count-sec'>
             <button className="cart-small-buttons" onClick={increment}>+</button>

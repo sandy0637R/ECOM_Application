@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import "./Register.css"
 
 const Register = () => {
   const navigate = useNavigate();
@@ -66,76 +67,78 @@ const Register = () => {
 
   return (
     <>
-      <div className='login-page'>
-        <form className='login-main' onSubmit={handleSubmit}>
-          <h1 className='login-heading'>Register</h1>
+      <div className='register-page'>
+        <form className='register-main' onSubmit={handleSubmit}>
+          <div className='register-head-sec'>
+          <h1 className='register-heading'>Register</h1>
+          </div>
           {error && <div className="error-message">{error}</div>} 
           {success && <div className="success-message">{success}</div>} 
           
-          <div className='login-sec'>
-            <label htmlFor="userName" className='login-label'>Enter Your Name:</label>
+          <div className='register-sec'>
+            <label htmlFor="userName" className='register-label'>Enter Your Name:</label>
             <input
               name='name'
               value={name}
               onChange={(e) => setName(e.target.value)} 
               type="text" 
-              className='login-input' 
+              className='register-input' 
               id='userName'
             />
           </div>
           
-          <div className='login-sec'>
-            <label htmlFor="userEmail" className='login-label'>Enter Your Email:</label>
+          <div className='register-sec'>
+            <label htmlFor="userEmail" className='register-label'>Enter Your Email:</label>
             <input
               name='email'
               value={email}
               onChange={(e) => setEmail(e.target.value)} 
               type="email" 
-              className='login-input' 
+              className='register-input' 
               id='userEmail'
             />
           </div>
           
-          <div className='login-sec'>
-            <label htmlFor="userPassword" className='login-label'>Enter Your Password:</label>
+          <div className='register-sec'>
+            <label htmlFor="userPassword" className='register-label'>Enter Your Password:</label>
             <input
               name='password'
               value={password}
               onChange={(e) => setPassword(e.target.value)} 
               type="password" 
-              className='login-input' 
+              className='register-input' 
               id='userPassword'
             />
           </div>
           
-          <div className='login-sec'>
-            <label htmlFor="userPhone" className='login-label'>Enter Your Phone Number:</label>
+          <div className='register-sec'>
+            <label htmlFor="userPhone" className='register-label'>Enter Your Phone Number:</label>
             <input
               name='phone'
               value={phone}
               onChange={(e) => setPhone(e.target.value)} 
               type="tel" 
-              className='login-input' 
+              className='register-input' 
               id='userPhone'
             />
           </div>
           
-          <div className='login-sec'>
-            <label htmlFor="userAddress" className='login-label'>Enter Your Address:</label>
+          <div className='register-sec'>
+            <label htmlFor="userAddress" className='register-label'>Enter Your Address:</label>
             <input
               name='address'
               value={address}
               onChange={(e) => setAddress(e.target.value)} 
               type="text" 
-              className='login-input' 
+              className='register-input' 
               id='userAddress'
             />
           </div>
 
-          <div className='login-sec'>
+          <div className='register-sec'>
             <input 
               type="submit" 
-              className='button1' 
+              className='register-button' 
               style={{ padding: "10px 25px", marginTop: "10px" }} 
               value="Register"
             /> 

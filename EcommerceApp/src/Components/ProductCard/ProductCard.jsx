@@ -13,7 +13,6 @@ function ProductCard({
   const navigate = useNavigate();
 
   const handleViewProduct = () => {
-    // Navigate to the ViewProduct component, passing the product in the state
     navigate("/viewproduct", { state: { product } });
   };
 

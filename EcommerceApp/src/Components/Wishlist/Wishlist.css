@@ -87,6 +87,14 @@
     border: none;
     border-radius: 5px;
 }
+
+.wishlist-addtocart:hover, .wishlist-remove-button:hover, .wishlist-button:hover{
+    background-color: var(--white);
+    box-shadow: 0px 0px 5px var(--dark_grey);
+    color: var(--dark_grey);
+    font-weight: 600;
+}
+
 .wishlist-title {
     font-size: 16px;
     font-weight: 600;
