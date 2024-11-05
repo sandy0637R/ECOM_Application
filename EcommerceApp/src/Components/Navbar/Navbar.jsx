@@ -5,8 +5,9 @@ import "./Navbar.css";
 const Navbar = ({ cart, wishlist }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [username, setUsername] = useState("");
-  const [searchQuery, setSearchQuery] = useState("");
   const navigate = useNavigate();
+
+
 
   useEffect(() => {
     const storedUser = JSON.parse(localStorage.getItem("userData"));
@@ -14,7 +15,7 @@ const Navbar = ({ cart, wishlist }) => {
       setIsLoggedIn(true);
       setUsername(storedUser.name); // Change 'fullname' to 'name' based on your registration code
     }
-  }, []);
+  }, [isLoggedIn]);
 
   const handleLogout = () => {
     const storedUser = JSON.parse(localStorage.getItem("userData"));
@@ -82,7 +83,7 @@ const Navbar = ({ cart, wishlist }) => {
           <>
             <li className="nav-item">
               <NavLink to="/profile" className="nav-link">
-                <i class="fa-solid fa-user user-icon"></i>
+                <i className="fa-solid fa-user user-icon"></i>
               </NavLink>
             </li>
             <li className="nav-item" style={{ cursor: "pointer" }} onClick={handleLogout}>

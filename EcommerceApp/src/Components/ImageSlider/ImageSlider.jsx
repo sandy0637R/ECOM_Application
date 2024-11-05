@@ -5,18 +5,18 @@ const ImageSlider = () => {
   const [slideIndex, setSlideIndex] = useState(0);
 
   const images = [
-    { src: 'https://via.placeholder.com/300x150/33FF57/FFFFFF?text=Product+1', alt: 'Image 1', caption: 'Caption Text 1' },
-    { src: 'https://via.placeholder.com/300x150/33FF57/FFFFFF?text=Product+2', alt: 'Image 2', caption: 'Caption Text 2' },
-    { src: 'https://via.placeholder.com/300x150/3357FF/FFFFFF?text=Product+3', alt: 'Image 3', caption: 'Caption Text 3' },
+    { src: '/assets/banner1.webp', alt: 'Image 1', caption: 'Caption Text 1' },
+    { src: '/assets/banner2.webp', alt: 'Image 2', caption: 'Caption Text 2' },
+    { src: '/assets/banner3.webp', alt: 'Image 3', caption: 'Caption Text 3' },
   ];
 
   useEffect(() => {
     const interval = setInterval(() => {
       setSlideIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, 4000); // Change image every 4 seconds
+    }, 5000); // Change image every 4 seconds
 
     return () => clearInterval(interval);
-  }, [images.length]);
+  }, [images]);
 
   const showSlides = (n) => {
     setSlideIndex(n);

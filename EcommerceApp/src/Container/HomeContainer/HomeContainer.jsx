@@ -1,25 +1,15 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import ProductCard from "../../Components/ProductCard/ProductCard";
-import { setProducts, addToCart, addToWishlist } from "../../Store/action"; // Adjust path as necessary
+import { fetchProducts, addToCart, addToWishlist } from "../../Store/action"; // Adjust path as necessary
 
 class HomeContainer extends Component {
   componentDidMount() {
-    this.getProducts();
-  }
-
-  getProducts() {
-    console.log("Get Products");
-    fetch("https://fakestoreapi.com/products")
-      .then((res) => res.json())
-      .then((json) => {
-        this.props.setProducts(json); // Dispatch products to the store
-      });
+    this.props.fetchProducts();  // Dispatch the FETCH_PRODUCTS action to trigger the saga
   }
 
   render() {
     const { products, addToCart, addToWishlist } = this.props;
-    console.log(products);
     return (
       <>
         <div className="products">
@@ -41,17 +31,16 @@ class HomeContainer extends Component {
   }
 }
 
-// Map state and actions to props
+// Map state to props
 const mapStateToProps = (state) => ({
-  products: state.products,
+  products: state.products,  // Access products from Redux store
 });
 
 const mapDispatchToProps = {
-  setProducts,
+  fetchProducts,  // Dispatch the action to trigger saga
   addToCart,
   addToWishlist,
 };
 
-// Connect the component to the Redux store
 export default connect(mapStateToProps, mapDispatchToProps)(HomeContainer);
 
