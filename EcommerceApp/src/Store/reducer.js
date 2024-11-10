@@ -1,7 +1,9 @@
-import { SET_PRODUCTS, ADD_TO_CART, ADD_TO_WISHLIST, REMOVE_FROM_CART, REMOVE_FROM_WISHLIST } from './action';
+// reducer.js
+import { SET_PRODUCTS, SET_FILTERED_PRODUCTS, ADD_TO_CART, ADD_TO_WISHLIST, REMOVE_FROM_CART, REMOVE_FROM_WISHLIST } from './action';
 
 const initialState = {
   products: [],
+  filteredProducts: [],  // State for filtered products
   cart: [],
   wishlist: [],
 };
@@ -12,27 +14,33 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         products: action.payload,
+        filteredProducts: action.payload,  // Initialize filteredProducts with all products
       };
 
-    case ADD_TO_CART: {
+    case SET_FILTERED_PRODUCTS:
+      return {
+        ...state,
+        filteredProducts: action.payload,  // Update filteredProducts in state
+      };
+
+    case ADD_TO_CART:
       const existingCartItem = state.cart.find(item => item.title === action.payload.title);
       if (existingCartItem) {
         return {
           ...state,
           cart: state.cart.map(item =>
             item.title === action.payload.title
-              ? { ...item, quantity: item.quantity + 1 } // Increment quantity
+              ? { ...item, quantity: item.quantity + 1 }
               : item
           ),
         };
       }
       return {
         ...state,
-        cart: [...state.cart, { ...action.payload, quantity: 1 }], // Add new item with quantity
+        cart: [...state.cart, { ...action.payload, quantity: 1 }],
       };
-    }
 
-    case ADD_TO_WISHLIST: {
+    case ADD_TO_WISHLIST:
       const existingWishlistItem = state.wishlist.find(item => item.title === action.payload.title);
       if (!existingWishlistItem) {
         return {
@@ -40,36 +48,30 @@ const reducer = (state = initialState, action) => {
           wishlist: [...state.wishlist, action.payload],
         };
       }
-      return state; // Do nothing if item already exists in wishlist
-    }
+      return state;
 
-    case REMOVE_FROM_CART: {
-      const existingCartItem = state.cart.find(item => item.title === action.payload.title);
-      if (existingCartItem) {
-        if (existingCartItem.quantity > 1) {
-          return {
-            ...state,
-            cart: state.cart.map(item =>
-              item.title === action.payload.title
-                ? { ...item, quantity: item.quantity - 1 } // Decrement quantity
-                : item
-            ),
-          };
-        }
+    case REMOVE_FROM_CART:
+      const cartItem = state.cart.find(item => item.title === action.payload.title);
+      if (cartItem && cartItem.quantity > 1) {
+        return {
+          ...state,
+          cart: state.cart.map(item =>
+            item.title === action.payload.title
+              ? { ...item, quantity: item.quantity - 1 }
+              : item
+          ),
+        };
       }
-      // If quantity is 1, remove item completely
       return {
         ...state,
         cart: state.cart.filter(item => item.title !== action.payload.title),
       };
-    }
 
-    case REMOVE_FROM_WISHLIST: {
+    case REMOVE_FROM_WISHLIST:
       return {
         ...state,
         wishlist: state.wishlist.filter(item => item.title !== action.payload.title),
       };
-    }
 
     default:
       return state;

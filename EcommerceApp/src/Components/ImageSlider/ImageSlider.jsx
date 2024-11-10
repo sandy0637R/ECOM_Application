@@ -5,9 +5,9 @@ const ImageSlider = () => {
   const [slideIndex, setSlideIndex] = useState(0);
 
   const images = [
-    { src: '/assets/banner1.webp', alt: 'Image 1', caption: 'Caption Text 1' },
-    { src: '/assets/banner2.webp', alt: 'Image 2', caption: 'Caption Text 2' },
-    { src: '/assets/banner3.webp', alt: 'Image 3', caption: 'Caption Text 3' },
+    { src: '/assets/banner1.webp', alt: 'Image 1', caption: '' },
+    { src: '/assets/banner2.webp', alt: 'Image 2', caption: '' },
+    { src: '/assets/banner3.webp', alt: 'Image 3', caption: '' },
   ];
 
   useEffect(() => {
